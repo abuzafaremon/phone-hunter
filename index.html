@@ -11,10 +11,27 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-  <header>
-    <h2 class="title">Find Your Phone</h2>
+<body class="bg-light">
+  <header class="text-center m-3">
+    <h2 class="text-success">Find Your <span class="text-dark">Phone</span></h2>
   </header>
+  <main class="container">
+    <div class="d-flex justify-content-center">
+      <input id="search-input" class="form-control w-50 me-2" type="search" placeholder="Search" aria-label="Search">
+      <button id="search-btn" class="btn btn-outline-success" type="submit">Search</button>
+    </div>
+    <div id="phones" class="m-5 d-grid grid-cols-3">
+      <div class="card" style="width: 18rem;">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
