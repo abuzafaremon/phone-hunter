@@ -1,5 +1,6 @@
 document.getElementById('search-btn').addEventListener('click', function () {
-  const searchText = document.getElementById('search-input').value;
+  const searchField = document.getElementById('search-input');
+  const searchText = searchField.value;
   const phonesUrl = `
   https://openapi.programming-hero.com/api/phones?search=${searchText}
   `;
@@ -11,8 +12,12 @@ document.getElementById('search-btn').addEventListener('click', function () {
   loadPhones();
 
   const displayPhones = phones => {
+    const first20Phones = phones.slice(0, 20);
     const phonesDiv = document.getElementById('phones-div');
-    for (const phone of phones) {
+    const loadMoreBtn = document.createElement('div');
+    loadMoreBtn.classList.add('d-grid', 'w-100')
+    loadMoreBtn.innerHTML = `<button class="btn btn-success mt-3" type="button">Load More</button>`
+    for (const phone of first20Phones) {
       const div = document.createElement('div');
       div.classList.add('card');
       div.innerHTML = `
@@ -24,6 +29,7 @@ document.getElementById('search-btn').addEventListener('click', function () {
       </div>
       `;
       phonesDiv.appendChild(div);
+      phonesDiv.appendChild(loadMoreBtn);
     }
   }
 })
@@ -43,9 +49,9 @@ const displayPhoneInfo = phone => {
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h6 class="card-title">${phone.name}</h6>
-            <h6 class="card-title">${phone.brand}</h6>
-            <span><h6>Release Date: </h6>${phone.releaseDate}</span>
+            <p class="card-title">${phone.name}</p>
+            <p class="card-title">Brand: ${phone.brand}</p>
+            <p>Release Date: ${phone.releaseDate}</p>
             <p class="card-text"></p>
           </div>
         </div>
