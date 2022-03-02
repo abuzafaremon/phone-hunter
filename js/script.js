@@ -20,10 +20,16 @@ document.getElementById('search-btn').addEventListener('click', function () {
       <div class="card-body">
         <h5 class="card-title">${phone.phone_name}</h5>
         <p class="card-text">Brand: ${phone.brand}</p>
-        <a href="#" class="btn btn-success" >More Info</a>
+        <a href="#" class="btn btn-success" onclick="loadPhoneInfo('${phone.slug}')">More Info</a>
       </div>
       `;
       phonesDiv.appendChild(div);
     }
   }
 })
+const loadPhoneInfo = slug => {
+  const url = `https://openapi.programming-hero.com/api/phone/${slug}`;
+  fetch(url)
+    .then(res => res.json())
+    .then(data => console.log(data.data))
+}
