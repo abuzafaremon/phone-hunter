@@ -14,14 +14,17 @@ document.getElementById('search-btn').addEventListener('click', function () {
   const displayPhones = phones => {
     const first20Phones = phones.slice(0, 20);
     const phonesDiv = document.getElementById('phones-div');
+    const phoneInfo = document.getElementById('phone-info');
+    phonesDiv.textContent = '';
+    phoneInfo.textContent = '';
     const loadMoreBtn = document.createElement('div');
     loadMoreBtn.classList.add('d-grid', 'w-100')
-    loadMoreBtn.innerHTML = `<button class="btn btn-success mt-3" type="button">Load More</button>`
+    loadMoreBtn.innerHTML = `<button id="load-more-btn" class="btn btn-success mt-3" type="button">Load More</button>`
     for (const phone of first20Phones) {
       const div = document.createElement('div');
       div.classList.add('card');
       div.innerHTML = `
-      <img src="${phone.image}" class="card-img-top" alt="...">
+      <img src="${phone.image}" class="card-img-top" alt="${phone.phone_name}">
       <div class="card-body">
         <h5 class="card-title">${phone.phone_name}</h5>
         <p class="card-text">Brand: ${phone.brand}</p>
@@ -30,6 +33,7 @@ document.getElementById('search-btn').addEventListener('click', function () {
       `;
       phonesDiv.appendChild(div);
       phonesDiv.appendChild(loadMoreBtn);
+      searchField.value = '';
     }
   }
 })
@@ -49,10 +53,14 @@ const displayPhoneInfo = phone => {
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <p class="card-title">${phone.name}</p>
-            <p class="card-title">Brand: ${phone.brand}</p>
-            <p>Release Date: ${phone.releaseDate}</p>
-            <p class="card-text"></p>
+            <h6 class="card-title">${phone.name}</h6>
+            <h6 class="card-title">Brand: ${phone.brand}</h6>
+            <h6>Release Date: ${phone.releaseDate}</h6>
+            <p class="card-text">Chipset: ${phone.mainFeatures.chipSet}</p>
+            <p class="card-text">Display Size: ${phone.mainFeatures.displaySize}</p>
+            <p class="card-text">Memory: ${phone.mainFeatures.memory}</p>
+            <p class="card-text">Sensors: ${phone.mainFeatures.sensors}</p>
+            <p class="card-text">Storage: ${phone.mainFeatures.storage}</p>
           </div>
         </div>
       </div>
