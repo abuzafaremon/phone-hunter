@@ -3,6 +3,9 @@ document.getElementById('search-btn').addEventListener('click', function () {
   // get searchField
   const searchField = document.getElementById('search-input');
   const searchText = searchField.value;
+  if (searchText == "") {
+    alert('Search a Phone')
+  };
   // dynamic api link created
   const phonesUrl = `
   https://openapi.programming-hero.com/api/phones?search=${searchText}
